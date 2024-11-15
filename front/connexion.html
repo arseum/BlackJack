@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connexion</title>
+    <link rel="stylesheet" href="connexion.css">
+</head>
+<body>
+    <div class="flip-card">
+        <div class="flip-card-inner" id="flipCardInner">
+            <div class="flip-card-front">
+                <h2>Connexion</h2>
+                <form id="loginForm">
+                    <input type="email" placeholder="Email" id="signInEmail" required>
+                    <input type="password" placeholder="Mot de passe" id="signInPassword" required>
+                    <button type="submit">Sign In</button>
+                </form>
+                <button id="openSignUp">Pas de compte ? Créer le !</button>
+            </div>
+            <div class="flip-card-back">
+                <h2>Inscription</h2>
+                <form id="signUpForm">
+                    <input type="text" placeholder="Prénom" id="signUpName" required>
+                    <input type="email" placeholder="Email" id="signUpEmail" required>
+                    <input type="password" placeholder="Mot de passe" id="signUpPassword" required>
+                    <button type="submit">Sign Up</button>
+                </form>
+                <button id="openSignIn">Déjà un compte ? Connecte toi !</button>
+            </div>
+        </div>
+    </div>
+    <script src="connexion.js"></script>
+</body>
+</html>
