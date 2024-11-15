@@ -1,12 +1,14 @@
 body {
     font-family: 'Arial', sans-serif;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start; /* Changer de center à flex-start */
     align-items: center;
     height: 100vh;
     margin: 0;
     background: #f6f5f7;
+    padding-left: 20%; /* Décalage de 20% à gauche, ce qui laisse 60% de l'écran vide à gauche */
 }
+
 
 .flip-card {
     background-color: transparent;
@@ -36,21 +38,21 @@ body {
     justify-content: center;
     align-items: center;
     padding: 20px;
+    background-size: cover; /* Garantit que l'image couvre toute la carte */
+    background-position: center; /* Centrer l'image */
 }
 
 .flip-card-front {
-    background-color: #bbb;
-    color: black;
+    background-image: url("./assets/img/carteFace.png");
 }
 
 .flip-card-back {
-    background-color: dodgerblue;
-    color: white;
-    transform: rotateY(180deg);
+    background-image: url("./assets/img/carteDos.png");
+    transform: rotateY(180deg) ;
 }
 
 .flip-card.flipped .flip-card-inner {
-    transform: rotateY(180deg);
+    transform: translateX(-250px) rotateY(180deg);
 }
 
 h2 {
