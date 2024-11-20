@@ -5,26 +5,47 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Connexion</title>
     <link rel="stylesheet" href="connexion.css">
+    <link rel="icon" href="./assets/img/spades.png" type="image/png">
+    <link rel="shortcut icon" href="./assets/img/spades.png" type="image/png">
 </head>
 <body>
+    <img class="title" src="./assets/img/title.png" alt="Titre">
+    <a href="./connexion.html" target="_self">
+        <img class="subTitle" src="./assets/img/subtitle.png" alt="Sous Titre">
+    </a>
     <div class="flip-card">
         <div class="flip-card-inner" id="flipCardInner">
             <div class="flip-card-front">
                 <h2>Connexion</h2>
                 <form id="loginForm">
-                    <input type="email" placeholder="Email" id="signInEmail" required>
-                    <input type="password" placeholder="Mot de passe" id="signInPassword" required>
-                    <button type="submit">Sign In</button>
+                    <div class="input-group">
+                        <input class="input-group__input" type="email" placeholder="&nbsp;" name="email" id="signInEmail" autocomplete="off" required />
+                        <label class="input-group__label" for="email"><b>Email</b></label>
+                    </div>
+                    <div class="input-group">
+                        <input class="input-group__input" type="password" placeholder="&nbsp;" name="mdp" id="signInPassword" autocomplete="off" required />
+                        <label class="input-group__label" for="mdp"><b>Mot de passe</b></label>
+                    </div>
+                    <button style="margin-top: 60px;"type="submit">Se connecter</button>
                 </form>
                 <button id="openSignUp">Pas de compte ? Créer le !</button>
             </div>
             <div class="flip-card-back">
-                <h2>Inscription</h2>
+                <h2 style="background-color:white;border-radius: 5px;padding:10px">Inscription</h2>
                 <form id="signUpForm">
-                    <input type="text" placeholder="Prénom" id="signUpName" required>
-                    <input type="email" placeholder="Email" id="signUpEmail" required>
-                    <input type="password" placeholder="Mot de passe" id="signUpPassword" required>
-                    <button type="submit">Sign Up</button>
+                    <div class="input-group">
+                        <input class="input-group__input" type="text" placeholder="&nbsp;" name="prenom" id="signUpName" autocomplete="off" required />
+                        <label class="input-group__label" for="prenom"><b>Prénom</b></label>
+                    </div>
+                    <div class="input-group">
+                        <input class="input-group__input" type="email" placeholder="&nbsp;" name="email" id="signUpEmail" autocomplete="off" required />
+                        <label class="input-group__label" for="email"><b>Email</b></label>
+                    </div>
+                    <div class="input-group">
+                        <input class="input-group__input" type="password" placeholder="&nbsp;" name="mdp" id="signUpPassword" autocomplete="off" required />
+                        <label class="input-group__label" for="mdp"><b>Mot de passe</b></label>
+                    </div>
+                    <button type="submit">S'inscrire</button>
                 </form>
                 <button id="openSignIn">Déjà un compte ? Connecte toi !</button>
             </div>
