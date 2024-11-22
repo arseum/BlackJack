@@ -1,7 +1,7 @@
 body {
     font-family: 'Arial', sans-serif;
     display: flex;
-    flex-direction: column; 
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100vh;
@@ -13,7 +13,7 @@ body {
 .title {
     position: absolute;
     top: 0;
-    width:60%;
+    width: 60%;
 }
 
 .subTitle {
@@ -22,28 +22,26 @@ body {
     left: 0;
     width: 5%;
     padding: 5px;
-    margin:15px;
+    margin: 15px;
 }
+
 .flip-card {
     background-color: transparent;
     width: 300px;
     height: 400px;
     perspective: 1000px;
-    position: absolute;
-    top:30%;
-    left:40%
+    position: relative; /* Change from absolute to relative */
+    margin: auto; /* Center the card */
 }
 
 .flip-card-inner {
-    position: relative;
     width: 100%;
     height: 100%;
     text-align: center;
     transform-style: preserve-3d;
     transition: transform 1s ease-in-out;
-    transform-origin: 57%;
+    position: relative; /* Ensure it's positioned relative to flip-card */
 }
-
 
 .flip-card-front, .flip-card-back {
     position: absolute;
@@ -57,26 +55,27 @@ body {
     justify-content: center;
     align-items: center;
     padding: 20px;
-    background-size: cover; /* Garantit que l'image couvre toute la carte */
-    background-position: center; /* Centrer l'image */
+    background-size: cover;
+    background-position: center;
 }
 
 .flip-card-front {
     background-image: url("./assets/img/carteFace.png");
     background-color: #ffffff;
+    transform: translateX(-20px);
 }
 
 .flip-card-back {
     background-image: url("./assets/img/carteDos-removebg-preview4.png");
-    background-color: #ffffff; /* Couleur autour de l'image */
-    transform: rotateY(180deg);
-    background-size: calc(100% - 30px) calc(100% - 30px); /* Réduit la taille de l'image pour créer un "padding" de 10px */
+    background-color: #ffffff;
+    transform: rotateY(180deg) translateX(20px);
+    background-size: calc(100% - 30px) calc(100% - 30px);
     background-position: center;
     background-repeat: no-repeat;
 }
 
 .flip-card.flipped .flip-card-inner {
-    transform: rotateY(180deg); /* Animation de retournement */
+    transform: rotateY(180deg);
 }
 
 h2 {
@@ -88,6 +87,7 @@ h2 {
     margin-bottom: 20px;
     position: relative;
 }
+
 .input-group__label {
     display: block;
     position: absolute;
@@ -99,6 +99,7 @@ h2 {
     transition: line-height 200ms ease-in-out, font-size 200ms ease-in-out, top 200ms ease-in-out;
     pointer-events: none;
 }
+
 .input-group__input {
     width: 100%;
     height: 30px;
@@ -106,6 +107,7 @@ h2 {
     border-radius: 3px;
     padding: 0 10px;
 }
+
 .input-group__input:not(:placeholder-shown) + label, .input-group__input:focus + label {
     background-color: white;
     line-height: 12px;
@@ -114,14 +116,15 @@ h2 {
     top: -5px;
     border-radius: 5px;
 }
+
 .input-group__input:focus {
     outline: none;
     border: 1px solid #C8102E;
 }
+
 .input-group__input:focus + label {
     color: black;
 }
-
 
 button {
     margin-top: 20px;
