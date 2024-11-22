@@ -6,7 +6,7 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
-    background: url("./assets/img/fondCasino.jpg") no-repeat center center fixed;
+    background: url("./../assets/img/fondCasino.jpg") no-repeat center center fixed;
     background-size: cover;
 }
 
@@ -60,13 +60,13 @@ body {
 }
 
 .flip-card-front {
-    background-image: url("./assets/img/carteFace.png");
+    background-image: url("./../assets/img/carteFace.png");
     background-color: #ffffff;
     transform: translateX(-20px);
 }
 
 .flip-card-back {
-    background-image: url("./assets/img/carteDos-removebg-preview4.png");
+    background-image: url("./../assets/img/carteDos-removebg-preview4.png");
     background-color: #ffffff;
     transform: rotateY(180deg) translateX(20px);
     background-size: calc(100% - 30px) calc(100% - 30px);

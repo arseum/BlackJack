@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BJS - Accueil</title>
+    <link rel="stylesheet" href="accueil.css">
+    <link rel="icon" href="./../assets/img/spades.png" type="image/png">
+    <link rel="shortcut icon" href="./../assets/img/spades.png" type="image/png">
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <a href="./accueil.html" target="_self">
+                <img class="subTitle" src="/assets/img/subtitle.png" alt="Logo">
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="./profile.html">Mon Profil</a></li>
+                    <li><a href="./settings.html">Paramètres</a></li>
+                    <li><a href="./logout.html">Se déconnecter</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <section class="dashboard">
+        <h2>Tableau de bord</h2>
+        <div class="dashboard-items">
+            <div class="item">
+                <h3>Vos statistiques</h3>
+                <p>Suivez vos performances ici.</p>
+                <button onclick="window.location.href='./stats.html'">Voir les statistiques</button>
+            </div>
+            <div class="item">
+                <h3>Jeux en cours</h3>
+                <p>Vous avez des parties en attente.</p>
+                <button onclick="window.location.href='./games.html'">Voir les jeux</button>
+            </div>
+            <div class="item">
+                <h3>Aide</h3>
+                <p>Besoin d'assistance ?</p>
+                <button onclick="window.location.href='./help.html'">Obtenir de l'aide</button>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 BJS. Tous droits réservés. Gabriel & Arsene co.</p>
+    </footer>
+</body>
+</html>
