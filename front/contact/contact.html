@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BJS - Accueil</title>
-    <link rel="stylesheet" href="accueil.css">
+    <title>Contact - Envoyer un Mail</title>
+    <link rel="stylesheet" href="contact.css">
     <link rel="icon" href="./../assets/img/spades.png" type="image/png">
     <link rel="shortcut icon" href="./../assets/img/spades.png" type="image/png">
 </head>
@@ -25,23 +25,24 @@
             <img class="subTitle" src="/assets/img/subtitle.png" alt="Sous Titre">
         </a>
     </div>
-    <h1 style="margin-top: 15vh; margin-bottom: 10vh;">Bonjour [pseudo]</h1>
-    <section class="dashboard">
-        <div class="dashboard-items">
-            <div class="item">
-                <h3>Mes statistiques</h3>
-                <button onclick="window.location.href='./stats.html'">Voir les statistiques</button>
+    <div class="contact-form-container">
+        <h2>Contactez-nous</h2>
+        <form id="contactForm">
+            <div class="input-group">
+                <input class="input-group__input" type="text" placeholder="&nbsp;" name="sujet" id="contactSubject" autocomplete="off" required />
+                <label class="input-group__label" for="contactSubject"><b>Sujet</b></label>
             </div>
-            <div class="item">
-                <h3>Mes parties en cours</h3>
-                <button onclick="window.location.href='./games.html'">Voir les jeux</button>
+            <div class="input-group">
+                <textarea class="input-group__input" placeholder="&nbsp;" name="message" id="contactMessage" rows="5" autocomplete="off" required></textarea>
+                <label class="input-group__label" for="contactMessage"><b>Message</b></label>
             </div>
-        </div>
-    </section>
-
+            <button type="submit">Envoyer</button>
+            <p class="noTroll">N'envoyer pas n'importe quoi, on peut ban votre compte</p>
+        </form>
+    </div>
     <footer>
         <p>&copy; 2024 BJS. Tous droits réservés. Gabriel & Arsene Co.</p>
     </footer>
-    <a href="./contact.html"><i><div class="probleme">Remonter un problème</div></i></a>
+    <script src="contact.js"></script>
 </body>
 </html>
