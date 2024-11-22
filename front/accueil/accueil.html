@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BJS - Accueil</title>
+    <link rel="stylesheet" href="accueil.css">
+    <link rel="icon" href="./../assets/img/spades.png" type="image/png">
+    <link rel="shortcut icon" href="./../assets/img/spades.png" type="image/png">
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <nav>
+                <ul>
+                    <li><a href="./profile.html">Mon Profil</a></li>
+                    <li><a href="./settings.html">Paramètres</a></li>
+                    <li><a href="./connexion.html">Déconnexion</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <div class="recBlanc">
+        <a href="./accueil.html" target="_self">
+            <img class="subTitle" src="/assets/img/subtitle.png" alt="Sous Titre">
+        </a>
+    </div>
+    <h1 style="margin-top: 15vh; margin-bottom: 10vh;">Bonjour [pseudo]</h1>
+    <section class="dashboard">
+        <div class="dashboard-items">
+            <div class="item">
+                <h3>Mes statistiques</h3>
+                <button onclick="window.location.href='./stats.html'">Voir les statistiques</button>
+            </div>
+            <div class="item">
+                <h3>Mes parties en cours</h3>
+                <button onclick="window.location.href='./games.html'">Voir les jeux</button>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 BJS. Tous droits réservés. Gabriel & Arsene Co.</p>
+    </footer>
+    <a href="./contact.html"><i><div class="probleme">Remonter un problème</div></i></a>
+</body>
+</html>
