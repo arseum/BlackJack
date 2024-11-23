@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", function() {
             .then(data => {
                 console.log('Success:', data);
                 if (data.message === 'Connexion réussie') {
-                    window.location.href = data.redirectTo;
+                    window.location.href = '/accueil';
                 } else {
                     alert('Email ou mot de passe incorrect');
                 }
