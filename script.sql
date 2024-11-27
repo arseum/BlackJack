@@ -27,10 +27,27 @@ CREATE TABLE users
     CONSTRAINT unique_login UNIQUE (login)
 );
 
+CREATE TABLE games
+(
+    game_id     SERIAL NOT NULL,
+    table_name  VARCHAR(255) NOT NULL,
+    max_players INT         DEFAULT 4,
+    status      VARCHAR(50) DEFAULT 'active',
+    created_at  TIMESTAMP   DEFAULT NOW(),
+    CONSTRAINT game_id PRIMARY KEY (user_id)
+);
+
+CREATE TABLE game_players
+(
+    game_player_id SERIAL PRIMARY KEY,
+    game_id        INT REFERENCES games(game_id),
+    user_id        INT REFERENCES users(user_id),
+    score          INT       DEFAULT 0,
+    joined_at      TIMESTAMP DEFAULT NOW()
+);
+
 -------------------------------------
 -- INSERTION DEFAULT
 -------------------------------------
 INSERT INTO users (login, mail, password)
-VALUES
-    ('admin', 'admin@example.com', 'adminpass'),
-    ('user1', 'user1@example.com', 'password123');
+VALUES ('toto', 'toto@toto.com', 'toto');

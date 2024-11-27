@@ -25,6 +25,7 @@ router.get('/connexion', (req, res) => {
     res.sendFile(path.join(__dirname, '../../front/connexion/connexion.html'));
 });
 
+//Page contact
 router.get('/email', security.checkJWT, (req, res) => {
     res.sendFile(path.join(__dirname, '../../front/contact/contact.html'));
 });

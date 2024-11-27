@@ -66,7 +66,6 @@ document.addEventListener("DOMContentLoaded", function() {
             .then(response => response.json())
             .then(data => {
                 console.log('Success:', data);
-                // Ajouter ici la logique pour rediriger ou afficher un message de succès
             })
             .catch((error) => {
                 console.error('Error:', error);

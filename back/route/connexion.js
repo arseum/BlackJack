@@ -25,7 +25,7 @@ router.post('/login', (req, res) => {
     if (email === "test@test" && mdp === "test") {
         const user = {email}; // todo definir un objet user ou laisser l'object user juste avec le mail
 
-        security.assignJWT(user, res)
+        security.assignJWT(user, res);
 
         res.status(200).json({
             message: 'Connexion réussie',
