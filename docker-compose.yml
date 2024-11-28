@@ -1,8 +1,8 @@
-version: '3.8'
+version: '3.9'
 
 services:
   postgres:
-    image: postgres:14-alpine
+    image: postgres:15-alpine
     environment:
       POSTGRES_USER: jack_daniel
       POSTGRES_PASSWORD: miel
@@ -11,3 +11,21 @@ services:
       - "5432:5432"
     volumes:
       - ~/apps/postgres:/var/lib/postgresql/data
+      - ./script.sql:/docker-entrypoint-initdb.d/script.sql
+
+# nike ta mere postgres
+
+# il faut faire un repertoire local ~/apps/postgres et lui donner tous les droits
+
+#mkdir -p ~/apps/postgres
+#chmod -R 777 ~/apps/postgres
+
+# et quand ca marche pas faut vider le repertoire pour que le docker créer les users
+# rm -rf ~/apps/postgres/*
+
+# docker-compose down
+# docker-compose up --force-recreate
+
+# pour se connexter en ligne de commande:
+# psql -h localhost -U jack_daniel -d blackjack -p 5432
+# et 'miel' comme mdp

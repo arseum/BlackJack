@@ -7,11 +7,10 @@
 -- CREATION
 -------------------------------------
 
-DROP SCHEMA IF EXISTS BlackJack CASCADE;
-CREATE SCHEMA BlackJack;
-
-SET
-search_path TO BlackJack;
+-- DROP SCHEMA IF EXISTS BlackJack CASCADE;
+-- CREATE SCHEMA BlackJack;
+--
+-- SET search_path TO BlackJack;
 
 CREATE TABLE users
 (
@@ -34,7 +33,7 @@ CREATE TABLE games
     max_players INT         DEFAULT 4,
     status      VARCHAR(50) DEFAULT 'active',
     created_at  TIMESTAMP   DEFAULT NOW(),
-    CONSTRAINT game_id PRIMARY KEY (user_id)
+    CONSTRAINT pk_games PRIMARY KEY (game_id)
 );
 
 CREATE TABLE game_players
