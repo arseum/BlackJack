@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", function() {
             const formData = new FormData(loginForm);   
             const data = {
                 email: formData.get('email'),
-                mdp: formData.get('mdp')
+                password: formData.get('mdp')
             };
 
             fetch('http://localhost:3000/api/login', {
@@ -51,9 +51,9 @@ document.addEventListener("DOMContentLoaded", function() {
             event.preventDefault();
             const formData = new FormData(signUpForm);
             const data = {
-                prenom: formData.get('prenom'),
+                login: formData.get('login'),
                 email: formData.get('email'),
-                mdp: formData.get('mdp')
+                password: formData.get('mdp')
             };
 
             fetch('http://localhost:3000/api/signup', {

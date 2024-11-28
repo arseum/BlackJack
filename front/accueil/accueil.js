@@ -13,3 +13,13 @@ logoutLink.addEventListener('click', function (e) {
             }
         })
 });
+
+function goPageGame() {
+    fetch('../game',{
+        method: 'GET', credentials: 'include',
+    }).then(response => {
+        if (response.ok) {
+            console.log(response)
+        }
+    })
+}

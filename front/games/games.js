@@ -1,46 +1,73 @@
-const logoutLink = document.getElementById('logout-link');
+async function fetchGames() {
+    const response = await fetch('/api/games/', {
+        method: 'GET',
+        // headers: {
+        //     'Authorization': 'Bearer ' + localStorage.getItem('access_token') // Assurez-vous que le token est dans le localStorage
+        // }
+    });
 
-logoutLink.addEventListener('click', function (e) {
-    e.preventDefault();
+    if (!response.ok) {
+        console.error('Erreur lors de la récupération des jeux');
+        console.log(response);
+        return;
+    }
 
-    fetch('/api/logout', {
-        method: 'POST',
-        credentials: 'include',
-    })
-        .then(response => {
-            if (response.ok) {
-                window.location.reload();
-            }
-        })
-});
+    const data = await response.json();
+    const gamesList = document.getElementById('games');
+    gamesList.innerHTML = '';
 
-document.getElementById('contactForm').addEventListener('submit', function(event) {
-    event.preventDefault(); // Empêche le rechargement de la page
+    data.games.forEach(game => {
+        const gameItem = document.createElement('li');
+        gameItem.textContent = `Table: ${game.table_name}, Max Players: ${game.max_players}`;
 
-    const name = document.getElementById('contactName').value;
-    const email = document.getElementById('contactEmail').value;
-    const subject = document.getElementById('contactSubject').value;
-    const message = document.getElementById('contactMessage').value;
+        const joinButton = document.createElement('button');
+        joinButton.textContent = 'Rejoindre';
+        joinButton.onclick = () => joinGame(game.game_id);
 
-    // Exemple d'envoi des données à un serveur via fetch
-    fetch('https://votre-serveur.com/send-email', {
+        gameItem.appendChild(joinButton);
+        gamesList.appendChild(gameItem);
+    });
+}
+
+async function joinGame(gameId) {
+    const response = await fetch(`/api/games/${gameId}/join`, {
+        method: 'GET',
+        // headers: {
+        //     'Authorization': 'Bearer ' + localStorage.getItem('access_token')
+        // }
+    });
+
+    const data = await response.json();
+    if (response.ok) {
+        alert(`Vous avez rejoint le jeu ${gameId}`);
+        fetchGames();
+    } else {
+        alert(data.error || 'Erreur lors de l\'ajout au jeu');
+    }
+}
+
+document.getElementById('create-game-form').addEventListener('submit', async function(event) {
+    event.preventDefault();
+
+    const tableName = document.getElementById('tableName').value;
+    const maxPlayers = document.getElementById('maxPlayers').value;
+
+    const response = await fetch('/api/games/create', {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            // 'Authorization': 'Bearer ' + localStorage.getItem('access_token')
         },
-        body: JSON.stringify({
-            name: name,
-            email: email,
-            subject: subject,
-            message: message
-        })
-    })
-    .then(response => response.json())
-    .then(data => {
-        alert('Email envoyé avec succès!');
-    })
-    .catch(error => {
-        console.error('Erreur:', error);
-        alert('Une erreur est survenue lors de l\'envoi de l\'email.');
+        body: JSON.stringify({ tableName, maxPlayers })
     });
+
+    const data = await response.json();
+    if (response.ok) {
+        alert(data.message);
+        fetchGames();
+    } else {
+        alert(data.error || 'Erreur lors de la création du jeu');
+    }
 });
+
+fetchGames();

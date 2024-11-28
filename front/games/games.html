@@ -3,46 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact - Envoyer un Mail</title>
-    <link rel="stylesheet" href="games.css">
-    <link rel="icon" href="./../assets/img/spades.png" type="image/png">
-    <link rel="shortcut icon" href="./../assets/img/spades.png" type="image/png">
+    <title>Gestion des Games</title>
+    <link rel="stylesheet" href="./games.css">
 </head>
 <body>
-    <header>
-        <div class="header-container">
-            <nav>
-                <ul>
-                    <li><a href="../profile/profile.html">Mon Profil</a></li>
-                    <li><a href="./settings.html">Paramètres</a></li>
-                    <li><a href="#" id="logout-link">Déconnexion</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
-    <div class="recBlanc">
-        <a href="./accueil.html" target="_self">
-            <img class="subTitle" src="/assets/img/subtitle.png" alt="Sous Titre">
-        </a>
-    </div>
-    <div class="contact-form-container">
-        <h2>Contactez-nous</h2>
-        <form id="contactForm">
-            <div class="input-group">
-                <input class="input-group__input" type="text" placeholder="&nbsp;" name="sujet" id="contactSubject" autocomplete="off" required />
-                <label class="input-group__label" for="contactSubject"><b>Sujet</b></label>
-            </div>
-            <div class="input-group">
-                <textarea class="input-group__input" placeholder="&nbsp;" name="message" id="contactMessage" rows="5" autocomplete="off" required></textarea>
-                <label class="input-group__label" for="contactMessage"><b>Message</b></label>
-            </div>
-            <button type="submit">Envoyer</button>
-            <p class="noTroll">N'envoyer pas n'importe quoi, on peut ban votre compte</p>
-        </form>
-    </div>
-    <footer>
-        <p>&copy; 2024 BJS. Tous droits réservés. Gabriel & Arsene Co.</p>
-    </footer>
-    <script src="contact.js"></script>
+<h1>Gestion des Jeux</h1>
+
+<!-- Section pour afficher les jeux actifs -->
+<section id="games-list">
+    <h2>Jeux actifs</h2>
+    <ul id="games"></ul>
+</section>
+
+<!-- Formulaire pour créer un nouveau jeu -->
+<section id="create-game">
+    <h2>Créer un nouveau jeu</h2>
+    <form id="create-game-form">
+        <label for="tableName">Nom de la table :</label>
+        <input type="text" id="tableName" name="tableName" required>
+        <label for="maxPlayers">Nombre maximum de joueurs :</label>
+        <input type="number" id="maxPlayers" name="maxPlayers" required>
+        <button type="submit">Créer</button>
+    </form>
+</section>
+
+<script src="./games.js"></script>
 </body>
 </html>

@@ -15,11 +15,9 @@ app.use(cors({
 app.use(cookieParser());
 
 const indexRouter = require('./back/route/index');
-const gameRouter = require('./back/route/games');
 
 
 app.use('', indexRouter);
-app.use('/game', gameRouter);
 
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
