@@ -15,7 +15,6 @@ router.post('/create', security.checkJWT, async (req, res) => {
 
     try {
         const result = await query('INSERT INTO games (table_name, max_players) VALUES ($1, $2)', [tableName, maxPlayers]);
-
         res.status(201).json({message: 'Table créée avec succès', table: result.rows[0]});
     } catch (error) {
         console.error('Erreur lors de la création de la table :', error);

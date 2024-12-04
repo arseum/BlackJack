@@ -1,7 +1,6 @@
 const jwt = require('jsonwebtoken');
 
-const ACCESS_TOKEN_SECRET = 'L/4UuYuTj28m';
-
+const ACCESS_TOKEN_SECRET = 'L/4UuYuTj28m'; // todo variable env
 const ACCESS_TOKEN_EXPIRATION = 5 * 60 * 60; //5h
 
 const generateAccessToken = (user) => {
@@ -10,27 +9,24 @@ const generateAccessToken = (user) => {
 
 const checkJWT = async (req, res, next) => {
     // let token = req.headers.authorization?.split(' ')[1];
-    let token = req.cookies.token;
+    // let token = req.cookies.token;
+    let {token} = req.headers;
+
     if (!!token && token.startsWith('Bearer ')) {
         token = token.slice(7, token.length);
     }
 
-    if (token) {
-        // console.log("check token :" + token)
-        jwt.verify(token, ACCESS_TOKEN_SECRET, (err, decoded) => {
-            if (err) {
-                return res.status(401).json('token_not_valid');
-            } else {
-                req.decoded = decoded;
-
-                assignJWT(req.user, res)
-                // req.user = {user: decoded.user};
-
-                next();
-            }
-        });
-    } else {
+    if (!token) {
         return res.redirect('/connexion');
+    }
+
+    try {
+        const token_decode = jwt.verify(token, ACCESS_TOKEN_EXPIRATION); //process.env.JWT_SECRET
+        req.body.userId = token_decode.id;
+        next();
+    } catch (err) {
+        // console.log(err);
+        res.json({success: false, message: "Error token"});
     }
 };
 
