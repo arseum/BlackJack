@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BJS - Accueil</title>
-    <link rel="stylesheet" href="accueil.css">
+    <link rel="stylesheet" href="profil.css">
     <link rel="icon" href="./../assets/img/spades.png" type="image/png">
     <link rel="shortcut icon" href="./../assets/img/spades.png" type="image/png">
 </head>
@@ -25,19 +25,26 @@
             <img class="subTitle" src="/assets/img/subtitle.png" alt="Sous Titre">
         </a>
     </div>
-    <h1 style="margin-top: 15vh; margin-bottom: 10vh;">Bonjour [pseudo]</h1>
-    <section class="dashboard">
-        <div class="dashboard-items">
-            <div class="item">
-                <h3>Mes statistiques</h3>
-                <button onclick="window.location.href='./stats.html'">Voir les statistiques</button>
+
+    <main>
+        <div class="profil-container">
+            <h1>Profil</h1>
+            <div class="profil-details">
+                <p><strong>Pseudo :</strong> Test</p>
+                <p><strong>Adresse e-mail :</strong> test@test.com</p>
             </div>
-            <div class="item">
-                <h3>Mes parties en cours</h3>
-                <button onclick="window.location.href='./games.html'">Voir les jeux</button>
+            <div class="profil-stats">
+                <h2>Statistiques</h2>
+                <ul>
+                    <li><strong>Parties totales jouées :</strong> 120</li>
+                    <li><strong>Parties en cours :</strong> 5</li>
+                    <li style="color:#10c863"><strong >Montant total gagné :</strong> +500 €</li>
+                    <li style="color:#C8102E"><strong >Montant total perdu :</strong> -300 €</li>
+                    <li><strong>Balance totale :</strong> <div class="balance">+200 €</div></li>
+                </ul>
             </div>
         </div>
-    </section>
+    </main>
 
     <footer>
         <p>&copy; 2024 BJS. Tous droits réservés. Gabriel & Arsene Co.</p>

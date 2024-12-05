@@ -10,6 +10,7 @@ app.use(cors());
 app.use(express.static(path.join(__dirname, 'front', 'connexion')));
 app.use(express.static(path.join(__dirname, 'front', 'accueil')));
 app.use(express.static(path.join(__dirname, 'front', 'contact')));
+app.use(express.static(path.join(__dirname, 'front', 'profil')));
 app.use('/assets', express.static(path.join(__dirname, 'front', 'assets')));
 
 // PageConnexion
@@ -24,6 +25,11 @@ app.get('/accueil', (req, res) => {
 app.get('/email', (req, res) => {
     res.sendFile(path.join(__dirname, 'front', 'contact', 'contact.html'));
 });
+
+app.get('/profil', (req, res) => {
+    res.sendFile(path.join(__dirname, 'front', 'profil', 'profil.html'));
+});
+
 
 // CONNEXION
 app.post('/api/login', (req, res) => {
