@@ -28,7 +28,7 @@ CREATE TABLE users
 
 CREATE TABLE games
 (
-    game_id     SERIAL NOT NULL,
+    game_id     SERIAL       NOT NULL,
     table_name  VARCHAR(255) NOT NULL,
     max_players INT         DEFAULT 4,
     status      VARCHAR(50) DEFAULT 'active',
@@ -39,8 +39,8 @@ CREATE TABLE games
 CREATE TABLE game_players
 (
     game_player_id SERIAL PRIMARY KEY,
-    game_id        INT REFERENCES games(game_id),
-    user_id        INT REFERENCES users(user_id),
+    game_id        INT REFERENCES games (game_id),
+    user_id        INT REFERENCES users (user_id),
     score          INT       DEFAULT 0,
     joined_at      TIMESTAMP DEFAULT NOW()
 );
@@ -49,4 +49,5 @@ CREATE TABLE game_players
 -- INSERTION DEFAULT
 -------------------------------------
 INSERT INTO users (login, mail, password)
-VALUES ('toto', 'toto@toto.com', 'toto');
+VALUES ('toto', 'toto@toto.com', '$2a$10$7nzn4B4uxMvuoZCtsFGsvuFoAeJ0oaEpbM91uDpNMS9/ApTB42W4e'),-- mdp: toto
+VALUES ('test', 'test@test', '$2a$10$VHcWdDJcO2UVgvu0yhgBfO8QiQ/YNMfK5LyUuTakKd78Db4IK8jZ.'); -- mdp: test

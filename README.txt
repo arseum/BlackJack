@@ -1,4 +1,26 @@
 Email : test@test
 MdP : test
-Lancer le serveur local : node server.js
+
+## serveur
+
+# start
+
+```
+node server.js
+```
+
 Port : http://localhost:3000/
+
+## docker postgres:
+
+# start
+
+```
+docker-compose up
+```
+
+# stop
+
+```
+docker-compose down
+```

@@ -8,9 +8,8 @@ const generateAccessToken = (user) => {
 };
 
 const checkJWT = async (req, res, next) => {
-    // let token = req.headers.authorization?.split(' ')[1];
-    // let token = req.cookies.token;
-    let {token} = req.headers;
+
+    let token = req.cookies.token;
 
     if (!!token && token.startsWith('Bearer ')) {
         token = token.slice(7, token.length);
@@ -20,14 +19,14 @@ const checkJWT = async (req, res, next) => {
         return res.redirect('/connexion');
     }
 
-    try {
-        const token_decode = jwt.verify(token, ACCESS_TOKEN_EXPIRATION); //process.env.JWT_SECRET
-        req.body.userId = token_decode.id;
+    jwt.verify(token, ACCESS_TOKEN_SECRET, (err, decoded) => {
+        if (err) {
+            return res.status(403).json({message: 'Token invalide ou expiré'});
+        }
+
+        req.user = decoded.user;
         next();
-    } catch (err) {
-        // console.log(err);
-        res.json({success: false, message: "Error token"});
-    }
+    });
 };
 
 const assignJWT = (user, res) => {
@@ -52,5 +51,6 @@ const flushJWT = (res) => {
 module.exports = {
     checkJWT,
     assignJWT,
-    flushJWT
+    flushJWT,
+    generateAccessToken
 };

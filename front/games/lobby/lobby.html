@@ -4,14 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestion des Games</title>
-    <link rel="stylesheet" href="./games.css">
+    <link rel="stylesheet" href="lobby.css">
 </head>
 <body>
 <h1>Gestion des Jeux</h1>
 
-<!-- Section pour afficher les jeux actifs -->
+<section id="games-en-cours-list">
+    <h2>Jeux en cours</h2>
+    <ul id="games-en-cours"></ul>
+</section>
+
 <section id="games-list">
-    <h2>Jeux actifs</h2>
+    <h2>Jeux que je peux rejoindre</h2>
     <ul id="games"></ul>
 </section>
 
@@ -27,6 +31,6 @@
     </form>
 </section>
 
-<script src="./games.js"></script>
+<script src="lobby.js"></script>
 </body>
 </html>

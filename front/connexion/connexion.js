@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
     const flipCard = document.querySelector('.flip-card');
     const openSignUp = document.getElementById('openSignUp');
     const openSignIn = document.getElementById('openSignIn');
@@ -6,19 +6,19 @@ document.addEventListener("DOMContentLoaded", function() {
     const signUpForm = document.getElementById('signUpForm');
 
     if (flipCard && openSignUp && openSignIn) {
-        openSignUp.addEventListener('click', function() {
+        openSignUp.addEventListener('click', function () {
             flipCard.classList.add('flipped');
         });
 
-        openSignIn.addEventListener('click', function() {
+        openSignIn.addEventListener('click', function () {
             flipCard.classList.remove('flipped');
         });
     }
 
     if (loginForm) {
-        loginForm.addEventListener('submit', function(event) {
+        loginForm.addEventListener('submit', function (event) {
             event.preventDefault();
-            const formData = new FormData(loginForm);   
+            const formData = new FormData(loginForm);
             const data = {
                 email: formData.get('email'),
                 password: formData.get('mdp')
@@ -31,23 +31,19 @@ document.addEventListener("DOMContentLoaded", function() {
                 },
                 body: JSON.stringify(data)
             })
-            .then(response => response.json())
-            .then(data => {
-                console.log('Success:', data);
-                if (data.message === 'Connexion réussie') {
-                    window.location.href = '/accueil';
-                } else {
-                    alert('Email ou mot de passe incorrect');
-                }
-            })
-            .catch((error) => {
-                console.error('Error:', error);
-            });
+                .then(response => {
+                        if (response.status === 400 || response.status === 401) {
+                            alert('Email ou mot de passe incorrect');
+                        } else {
+                            window.location.href = '/accueil';
+                        }
+                    }
+                )
         });
     }
 
     if (signUpForm) {
-        signUpForm.addEventListener('submit', function(event) {
+        signUpForm.addEventListener('submit', function (event) {
             event.preventDefault();
             const formData = new FormData(signUpForm);
             const data = {
@@ -63,13 +59,13 @@ document.addEventListener("DOMContentLoaded", function() {
                 },
                 body: JSON.stringify(data)
             })
-            .then(response => response.json())
-            .then(data => {
-                console.log('Success:', data);
-            })
-            .catch((error) => {
-                console.error('Error:', error);
-            });
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Success:', data);
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                });
         });
     }
 });

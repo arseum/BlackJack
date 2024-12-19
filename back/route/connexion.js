@@ -16,7 +16,7 @@ router.post('/signup', async (req, res) => {
     const result = await query('SELECT * FROM users WHERE mail = $1', [email]);
 
     if (result.rows.length > 0) {
-        return res.status(400).json({ message: 'L\'email est déjà utilisé' });
+        return res.status(400).json({message: 'L\'email est déjà utilisé'});
     }
 
     const hashedPassword = await bcrypt.hash(password, 10);
@@ -27,8 +27,8 @@ router.post('/signup', async (req, res) => {
     );
 
     const newUser = insertResult.rows[0];
-    console.log("nouvelle inscription !");
-    return res.status(201).json({ message: 'Inscription réussie', user: newUser });
+    console.log("DEBUG: nouvelle inscription !");
+    return res.status(201).json({message: 'Inscription réussie', user: newUser});
 });
 
 // CONNEXION
@@ -42,7 +42,7 @@ router.post('/login', async (req, res) => {
     const result = await query('SELECT * FROM users WHERE mail = $1', [email]);
 
     if (result.rows.length === 0) {
-        return res.status(401).json({ message: 'Email ou mot de passe incorrect' });
+        return res.status(401).json({message: 'Email ou mot de passe incorrect'});
     }
 
     const user = result.rows[0];
@@ -51,20 +51,21 @@ router.post('/login', async (req, res) => {
     console.log("DEBUG: mdp recu:", password);
     console.log("DEBUG: mdp requis:", user.password);
 
-    const isMatch = await bcrypt.compare(password, user.password);
+    bcrypt.compare(password, user.password, function (error, response) {
+        if (error) {
 
-    if (!isMatch) {
-        return res.status(401).json({ message: 'Email ou mot de passe incorrect' });
-    }
+        }
+        if (response) {
+            const token = security.generateAccessToken(user);
+            console.log(`DEBUG: connexion réussi avec ${user.login} !`);
 
-    security.assignJWT(user, res);
-
-    console.log(`connexion reussi avec ${user.login} !`);
-
-    res.status(200).json({
-        message: 'Connexion réussie',
+            security.assignJWT(user, res);
+            res.status(200).json();
+        } else {
+            console.log(`DEBUG: mot de passe invalid pour ${user.login} !`);
+            return res.status(401).json({message: 'Email ou mot de passe incorrect'});
+        }
     });
-
 });
 
 // LOGOUT

@@ -1,9 +1,7 @@
 async function fetchGames() {
+    //game joignable
     const response = await fetch('/api/games/', {
         method: 'GET',
-        // headers: {
-        //     'Authorization': 'Bearer ' + localStorage.getItem('access_token') // Assurez-vous que le token est dans le localStorage
-        // }
     });
 
     if (!response.ok) {
@@ -27,20 +25,44 @@ async function fetchGames() {
         gameItem.appendChild(joinButton);
         gamesList.appendChild(gameItem);
     });
+
+    //game active
+    const response1 = await fetch('/api/games/active', {
+        method: 'GET',
+    });
+
+    if (!response1.ok) {
+        console.error('Erreur lors de la récupération des jeux actif');
+        console.log(response);
+        return;
+    }
+
+    const data2 = await response1.json();
+    const gamesEnCours = document.getElementById('games-en-cours');
+    gamesEnCours.innerHTML = '';
+
+    data2.games.forEach(game => {
+        let item = document.createElement('li');
+        item.textContent = `Table: ${game.table_name}`;
+
+        const openButton = document.createElement('button');
+        openButton.textContent = 'Ouvrir';
+        openButton.onclick = () => console.log("todo");
+
+        item.appendChild(openButton);
+        gamesEnCours.appendChild(item);
+    });
 }
 
 async function joinGame(gameId) {
     const response = await fetch(`/api/games/${gameId}/join`, {
         method: 'GET',
-        // headers: {
-        //     'Authorization': 'Bearer ' + localStorage.getItem('access_token')
-        // }
     });
 
     const data = await response.json();
     if (response.ok) {
         alert(`Vous avez rejoint le jeu ${gameId}`);
-        fetchGames();
+        await fetchGames();
     } else {
         alert(data.error || 'Erreur lors de l\'ajout au jeu');
     }
